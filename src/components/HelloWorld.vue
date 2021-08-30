@@ -83,7 +83,7 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class LiffData extends Vue {
+export default class HelloWorld extends Vue {
   get os() {
     return liff.getOS();
   }
@@ -107,10 +107,7 @@ export default class LiffData extends Vue {
   get isLoggedIn() {
     return liff.isLoggedIn();
   }
-}
 
-@Component
-export default class Profile extends Vue {
   get token() {
     return liff.getDecodedIDToken();
   }
