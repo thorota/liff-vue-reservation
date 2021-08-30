@@ -6,6 +6,21 @@
   <router-view/>
 </template>
 
+@Component
+export default class App extends Vue {
+  @Prop({ type: Boolean, default: false })
+  loggedIn = false;
+
+  created() {
+    liff.init({
+      liffId: '1656366110-L0V6MlRo'
+    })
+    .then(() => {
+      this.loggedIn = liff.isLoggedIn();
+    })
+  }
+}
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
