@@ -1,5 +1,5 @@
 <template>
-  <div class="liff-data">
+  <div class="hello-world">
     <table>
       <tr>
         <th>OS</th>
@@ -28,59 +28,10 @@
     </table>
   </div>
 </template>
-<template>
-  <div class="profile">
-    <table>
-      <tr>
-        <th>IDトークンの生成URL</th>
-        <td>{{ token.iss }}</td>
-      </tr>
-      <tr>
-        <th>ユーザーID</th>
-        <td>{{ token.sub }}</td>
-      </tr>
-      <tr>
-        <th>チャネルID</th>
-        <td>{{ token.aud }}</td>
-      </tr>
-      <tr>
-        <th>トークンの有効期限</th>
-        <td>{{ token.exp }}</td>
-      </tr>
-      <tr>
-        <th>IDトークンの生成時間</th>
-        <td>{{ token.iat }}</td>
-      </tr>
-      <tr>
-        <th>ユーザー認証時間</th>
-        <td>{{ token.auth_time }}</td>
-      </tr>
-      <tr>
-        <th>nonce</th>
-        <td>{{ token.nonce }}</td>
-      </tr>
-      <tr>
-        <th>認証方法</th>
-        <td>{{ token.amr }}</td>
-      </tr>
-      <tr>
-        <th>表示名</th>
-        <td>{{ token.name }}</td>
-      </tr>
-      <tr>
-        <th>プロフィールの画像URL</th>
-        <td>{{ token.picture }}</td>
-      </tr>
-      <tr>
-        <th>メールアドレス</th>
-        <td>{{ token.email }}</td>
-      </tr>
-    </table>
-  </div>
-</template>
 
 <script>
 import { Component, Vue } from "vue-property-decorator";
+import liff from '@line/liff';
 
 @Component
 export default class HelloWorld extends Vue {

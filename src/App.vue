@@ -7,14 +7,16 @@
 </template>
 
 <script>
-import { Component, Vue } from "vue-property-decorator";
+// import { Component, Vue } from 'vue-class-component';
+import { Component, Vue, Prop } from "vue-property-decorator";
+import liff from '@line/liff';
 
 @Component
 export default class App extends Vue {
   @Prop({ type: Boolean, default: false })
   loggedIn = false;
 
-  created() {
+  beforeCreate() {
     liff.init({
       liffId: '1656366110-L0V6MlRo'
     })

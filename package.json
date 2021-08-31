@@ -9,10 +9,12 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@line/liff": "^2.13.0",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
+    "vue-property-decorator": "^9.1.2",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
