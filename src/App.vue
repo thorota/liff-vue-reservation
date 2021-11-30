@@ -8,8 +8,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import "@/assets/css/reset.css";
-import "@/assets/css/base.css";
 export default defineComponent({});
 </script>
 
