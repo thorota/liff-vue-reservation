@@ -1,66 +1,98 @@
 <template>
-  <div class="hello-world">
-    <table>
-      <tr>
-        <th>OS</th>
-        <td>{{ os }}</td>
-      </tr>
-      <tr>
-        <th>Language</th>
-        <td>{{ language }}</td>
-      </tr>
-      <tr>
-        <th>LIFF SDK Version</th>
-        <td>{{ sdkVersion }}</td>
-      </tr>
-      <tr>
-        <th>LINE Version</th>
-        <td>{{ lineVersion }}</td>
-      </tr>
-      <tr>
-        <th>isInClient</th>
-        <td>{{ isInClient }}</td>
-      </tr>
-      <tr>
-        <th>isLoggedIn</th>
-        <td>{{ isLoggedIn }}</td>
-      </tr>
-    </table>
+  <div class="hello-world" v-if="isInClient">
+    <h1 class="hello-world__title">
+      Welcome to Your Liff + Vue.js App
+    </h1>
+    <ul class="hello-world__profile" v-show="liffState.profile">
+      <li class="profile-items" v-for="(v, k) in liffState.profile" :key="k">
+        <img v-if="k === 'pictureUrl'" :src="v" alt="line-profile-picture" />
+        <span v-else>{{ `${k}: ${v}` }}</span>
+      </li>
+    </ul>
+  </div>
+  <div
+    class="hello-world--loading"
+    v-else-if="isInClient === 'NOT_INITIALIZED'"
+  >
+    Loading...
+  </div>
+  <div class="hello-world--inactive" v-else-if="isInClient === false">
+    Please open in LIFF browser!!
   </div>
 </template>
 
-<script>
-import { Component, Vue } from "vue-property-decorator";
-import liff from '@line/liff';
+<script lang="ts">
+import { defineComponent, onMounted, reactive, ref } from "vue";
+import liff from "@line/liff";
 
-@Component
-export default class HelloWorld extends Vue {
-  get os() {
-    return liff.getOS();
+type LiffState = {
+  profile?: {
+    userId: string;
+    displayName: string;
+    pictureUrl?: string;
+    statusMessage?: string;
+  };
+};
+
+export default defineComponent({
+  setup() {
+    const isInClient = ref<boolean | "NOT_INITIALIZED">("NOT_INITIALIZED");
+    const liffState = reactive<LiffState>({
+      profile: undefined
+    });
+
+    const getProfile = async () => {
+      const profile = await liff.getProfile();
+      liffState.profile = profile;
+    };
+
+    onMounted(async () => {
+      // LIFFアプリの初期化
+      await liff.init({ liffId: process.env.VUE_APP_LIFF_ID });
+
+      // LIFFブラウザで起動しているかの判定
+      if (liff.isInClient()) {
+        isInClient.value = true;
+        getProfile();
+        return;
+      }
+
+      isInClient.value = false;
+    });
+
+    return {
+      liffState,
+      isInClient
+    };
+  }
+});
+</script>
+
+<style lang="scss" scoped>
+.hello-world {
+  padding-bottom: 60px;
+
+  &--inactive {
+    font-size: 1.8rem;
+    color: red;
   }
 
-  get language() {
-    return liff.getLanguage();
+  &__title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
   }
 
-  get lineVersion() {
-    return liff.getLineVersion();
-  }
+  &__profile {
+    font-size: 1.4rem;
 
-  get sdkVersion() {
-    return liff.getVersion();
-  }
-
-  get isInClient() {
-    return liff.isInClient();
-  }
-
-  get isLoggedIn() {
-    return liff.isLoggedIn();
-  }
-
-  get token() {
-    return liff.getDecodedIDToken();
+    .profile-items {
+      padding: 4px 8px;
+      > img {
+        display: block;
+        width: 100%;
+      }
+    }
   }
 }
-</script>
+</style>
