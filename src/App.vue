@@ -6,25 +6,11 @@
   <router-view/>
 </template>
 
-<script>
-// import { Component, Vue } from 'vue-class-component';
-import { Component, Vue, Prop } from "vue-property-decorator";
-import liff from '@line/liff';
-
-@Component
-export default class App extends Vue {
-  @Prop({ type: Boolean, default: false })
-  loggedIn = false;
-
-  beforeCreate() {
-    liff.init({
-      liffId: '1656366110-L0V6MlRo'
-    })
-    .then(() => {
-      this.loggedIn = liff.isLoggedIn();
-    })
-  }
-}
+<script lang="ts">
+import { defineComponent } from "vue";
+import "@/assets/css/reset.css";
+import "@/assets/css/base.css";
+export default defineComponent({});
 </script>
 
 <style>
