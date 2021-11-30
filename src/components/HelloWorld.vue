@@ -47,7 +47,7 @@ export default defineComponent({
     };
     onMounted(async () => {
       // LIFFアプリの初期化
-      await liff.init({ liffId: process.env.MY_LIFF_ID });
+      await liff.init({ liffId: "1656366110-L0V6MlRo" });
 
       // LIFFブラウザで起動しているかの判定
       if (liff.isInClient()) {
@@ -67,31 +67,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.hello-world {
-  padding-bottom: 60px;
+<style>
 
-  &--inactive {
-    font-size: 1.8rem;
-    color: red;
-  }
-
-  &__title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-
-  &__profile {
-    font-size: 1.4rem;
-
-    .profile-items {
-      padding: 4px 8px;
-      > img {
-        display: block;
-        width: 100%;
-      }
-    }
-  }
-}
 </style>
