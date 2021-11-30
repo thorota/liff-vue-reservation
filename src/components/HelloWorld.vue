@@ -47,7 +47,7 @@ export default defineComponent({
     };
     onMounted(async () => {
       // LIFFアプリの初期化
-      // await liff.init({ liffId: process.env.MY_LIFF_ID });
+      await liff.init({ liffId: process.env.MY_LIFF_ID });
 
       // LIFFブラウザで起動しているかの判定
       if (liff.isInClient()) {
