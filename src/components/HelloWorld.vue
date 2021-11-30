@@ -17,7 +17,8 @@
     Loading...
   </div>
   <div class="hello-world--inactive" v-else-if="isInClient === false">
-    Please open in LIFF browser!!
+    <p>Please open in LIFF browser!!</p>
+    <h2>{{ process.env }}</h2>
   </div>
 </template>
 
