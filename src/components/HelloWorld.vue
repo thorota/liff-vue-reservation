@@ -66,6 +66,7 @@ export default defineComponent({
       if (liff.isInClient()) {
         isInClient.value = true;
         getProfile();
+        sendMessage();
         return;
       }
 
