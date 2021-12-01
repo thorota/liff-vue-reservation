@@ -9,10 +9,6 @@
         <span v-else>{{ `${k}: ${v}` }}</span>
       </li>
     </ul>
-    <form
-      class="form"
-      @submit.prevent="onSubmit"
-    >
       <div class="field">
         <label>name</label>
         <input
@@ -31,11 +27,10 @@
       </div>
       <button
         class="button"
-        type="submit"
+        @click="sendMessage"
       >
         送信
-      </button> -->
-    </form>
+      </button>
   </div>
 
   <div
@@ -71,6 +66,7 @@ export default defineComponent({
     });
     const name = "";
     const tel = "";
+
     const getProfile = async () => {
       const profile = await liff.getProfile();
       liffState.profile = profile;
@@ -87,10 +83,6 @@ export default defineComponent({
       }).catch(function(error) {
         window.alert('Error sending message: ' + error);
       });
-    };
-
-    const onSubmit = () => {
-      sendMessage();
     };
 
     onMounted(async () => {
