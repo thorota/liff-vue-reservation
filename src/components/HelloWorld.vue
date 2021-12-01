@@ -27,7 +27,7 @@
       </div>
       <button
         class="button"
-        @click="sendMessage()"
+        @click="sendMessage"
       >
         送信
       </button>
