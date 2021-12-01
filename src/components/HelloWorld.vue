@@ -45,6 +45,19 @@ export default defineComponent({
       const profile = await liff.getProfile();
       liffState.profile = profile;
     };
+    const sendMessage = async () => {
+      const profile = await liff.getProfile();
+      liffState.profile = profile;
+      liff.sendMessages([{
+      'type': 'text',
+      'text': 'メッセージを送ります'
+      }]).then(function() {
+        window.alert('Message sent');
+      }).catch(function(error) {
+        window.alert('Error sending message: ' + error);
+      });
+    };
+
     onMounted(async () => {
       // LIFFアプリの初期化
       await liff.init({ liffId: "1656366110-L0V6MlRo" });
@@ -65,22 +78,6 @@ export default defineComponent({
     };
   }
 });
-if (!liff.isInClient()) {
-    window.alert('This button is unavailable as LIFF is currently being opened in an external browser.');
-} else {
-    liff.sendMessages([
-        {
-            type: 'text',
-            text: 'Hello, World!',
-        },
-    ])
-        .then(() => {
-            window.alert('Message sent');
-        })
-        .catch((error) => {
-            window.alert('Error sending message: ' + error);
-        });
-}
 </script>
 
 <style>
