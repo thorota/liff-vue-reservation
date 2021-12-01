@@ -17,8 +17,7 @@
     Loading...
   </div>
   <div class="hello-world--inactive" v-else-if="isInClient === false">
-    <p>Please open in LIFF browser!!</p>
-    <h2>{{ process.env }}</h2>
+    Please open in LIFF browser!!
   </div>
 </template>
 
@@ -34,7 +33,7 @@ type LiffState = {
     statusMessage?: string;
   };
 };
-
+console.log(process.env);
 export default defineComponent({
   setup() {
     const isInClient = ref<boolean | "NOT_INITIALIZED">("NOT_INITIALIZED");

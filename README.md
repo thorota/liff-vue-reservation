@@ -10,15 +10,9 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Deploy the app using 'Deploy to Heroku' button
 
-### Lints and fixes files
-```
-npm run lint
-```
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/thorota/liff-vue-reservation)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
