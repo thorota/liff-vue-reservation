@@ -9,7 +9,7 @@
         <span v-else>{{ `${k}: ${v}` }}</span>
       </li>
     </ul>
-    <!-- <form
+    <form
       class="form"
       @submit.prevent="onSubmit"
     >
@@ -35,14 +35,16 @@
       >
         送信
       </button>
-    </form> -->
+    </form>
   </div>
+
   <div
     class=""
     v-else-if="isInClient === 'NOT_INITIALIZED'"
   >
     Loading...
   </div>
+  
   <div class="" v-else-if="isInClient === false">
     Please open in LIFF browser!!
   </div>
