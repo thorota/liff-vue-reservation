@@ -9,6 +9,11 @@
         <span v-else>{{ `${k}: ${v}` }}</span>
       </li>
     </ul>
+    <form
+      novalidate
+      class="ui form"
+      @submit.prevent="onSubmit"
+    >
     <div class="field">
       <label>name</label>
       <input
@@ -27,10 +32,11 @@
     </div>
     <button
       class="button"
-      @click="onSendClick()"
+      type="submit"
     >
       送信
     </button>
+    </form>
   </div>
   <div
     class=""
@@ -70,7 +76,6 @@ export default defineComponent({
       name: '',
       tel: '',
     })
-
     const getProfile = async () => {
       const profile = await liff.getProfile();
       liffState.profile = profile;
@@ -81,7 +86,7 @@ export default defineComponent({
       liffState.profile = profile;
       liff.sendMessages([{
       'type': 'text',
-      'text': field.value.name + field.value.tel
+      'text': "予約情報：" + field.value.name + field.value.tel
       }]).then(function() {
         window.alert('Message sent');
       }).catch(function(error) {
@@ -89,9 +94,10 @@ export default defineComponent({
       });
     };
 
-    const onSendClick = () => {
+    const onSubmit = () => {
       sendMessage();
-    }
+    };
+
     onMounted(async () => {
       // LIFFアプリの初期化
       await liff.init({ liffId: "1656366110-L0V6MlRo" });
