@@ -9,10 +9,10 @@
         <span v-else>{{ `${k}: ${v}` }}</span>
       </li>
     </ul>
-    <form
+    <!-- <form
       class="form"
       @submit.prevent="onSubmit"
-    >
+    > -->
       <div class="field">
         <label>name</label>
         <input
@@ -29,13 +29,13 @@
         placeholder="電話番号を入力してください"
         />
       </div>
-      <button
+      <!-- <button
         class="button"
         type="submit"
       >
         送信
-      </button>
-    </form>
+      </button> -->
+    <!-- </form> -->
   </div>
 
   <div
@@ -44,7 +44,7 @@
   >
     Loading...
   </div>
-  
+
   <div class="" v-else-if="isInClient === false">
     Please open in LIFF browser!!
   </div>
