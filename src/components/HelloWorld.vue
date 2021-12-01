@@ -9,28 +9,6 @@
         <span v-else>{{ `${k}: ${v}` }}</span>
       </li>
     </ul>
-      <div class="field">
-        <label>name</label>
-        <input
-          v-model="name"
-          type="text"
-          placeholder="名前を入力してください!"
-        >
-      </div>
-      <div class="field">
-        <label>tel</label>
-        <input
-        v-model="tel"
-        type="text"
-        placeholder="電話番号を入力してください"
-        />
-      </div>
-      <button
-        class="button"
-        @click="sendMessage"
-      >
-        送信
-      </button>
   </div>
 
   <div
@@ -64,8 +42,6 @@ export default defineComponent({
     const liffState = reactive<LiffState>({
       profile: undefined
     });
-    const name = "";
-    const tel = "";
 
     const getProfile = async () => {
       const profile = await liff.getProfile();
@@ -75,7 +51,7 @@ export default defineComponent({
     const sendMessage = () => {
       liff.sendMessages([{
       'type': 'text',
-      'text': "予約情報：" + name + tel
+      'text': "サンプルテキスト"
       }]).then(function() {
         window.alert('Message sent');
       }).catch(function(error) {
@@ -91,6 +67,7 @@ export default defineComponent({
       if (liff.isInClient()) {
         isInClient.value = true;
         getProfile();
+        // sendMessage();
         return;
       }
 
