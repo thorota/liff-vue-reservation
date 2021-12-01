@@ -1,0 +1,7 @@
+{
+    "name": "Node.js Sample",
+    "description": "A Node.js project",
+    "repository": "https://github.com/thorota/liff-vue-reservation",
+    "logo": "https://node-js-sample.herokuapp.com/node.png",
+    "keywords": ["node", "express", "static"]
+  }
