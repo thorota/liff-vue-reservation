@@ -89,7 +89,7 @@ export default defineComponent({
       });
     };
 
-    const onButtonClick = () => {
+    const onSendClick = () => {
       sendMessage();
     }
     onMounted(async () => {
