@@ -72,9 +72,7 @@ export default defineComponent({
       liffState.profile = profile;
     };
     
-    const sendMessage = async () => {
-      const profile = await liff.getProfile();
-      liffState.profile = profile;
+    const sendMessage = () => {
       liff.sendMessages([{
       'type': 'text',
       'text': "予約情報：" + name + tel
