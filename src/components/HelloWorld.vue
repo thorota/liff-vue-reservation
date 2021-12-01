@@ -9,34 +9,33 @@
         <span v-else>{{ `${k}: ${v}` }}</span>
       </li>
     </ul>
-    <form
-      novalidate
-      class="ui form"
+    <!-- <form
+      class="form"
       @submit.prevent="onSubmit"
     >
-    <div class="field">
-      <label>name</label>
-      <input
-        v-model="field.name"
+      <div class="field">
+        <label>name</label>
+        <input
+          v-model="field.name"
+          type="text"
+          placeholder="名前を入力してください!"
+        >
+      </div>
+      <div class="field">
+        <label>tel</label>
+        <input
+        v-model="field.tel"
         type="text"
-        placeholder="名前を入力してください!"
+        placeholder="電話番号を入力してください"
+        />
+      </div>
+      <button
+        class="button"
+        type="submit"
       >
-    </div>
-    <div class="field">
-      <label>tel</label>
-      <input
-      v-model="field.tel"
-      type="text"
-      placeholder="電話番号を入力してください"
-      />
-    </div>
-    <button
-      class="button"
-      type="submit"
-    >
-      送信
-    </button>
-    </form>
+        送信
+      </button>
+    </form> -->
   </div>
   <div
     class=""
