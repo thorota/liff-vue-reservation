@@ -9,14 +9,14 @@
         <span v-else>{{ `${k}: ${v}` }}</span>
       </li>
     </ul>
-    <!-- <form
+    <form
       class="form"
       @submit.prevent="onSubmit"
-    > -->
+    >
       <div class="field">
         <label>name</label>
         <input
-          v-model="field.name"
+          v-model="name"
           type="text"
           placeholder="名前を入力してください!"
         >
@@ -24,18 +24,18 @@
       <div class="field">
         <label>tel</label>
         <input
-        v-model="field.tel"
+        v-model="tel"
         type="text"
         placeholder="電話番号を入力してください"
         />
       </div>
-      <!-- <button
+      <button
         class="button"
         type="submit"
       >
         送信
       </button> -->
-    <!-- </form> -->
+    </form>
   </div>
 
   <div
@@ -62,10 +62,6 @@ type LiffState = {
     statusMessage?: string;
   };
 };
-interface Field {
-  name: string,
-  tel: string,
-}
 
 export default defineComponent({
   setup() {
@@ -73,10 +69,8 @@ export default defineComponent({
     const liffState = reactive<LiffState>({
       profile: undefined
     });
-    const field = ref<Field>({
-      name: '',
-      tel: '',
-    })
+    const name = "";
+    const tel = "";
     const getProfile = async () => {
       const profile = await liff.getProfile();
       liffState.profile = profile;
@@ -87,7 +81,7 @@ export default defineComponent({
       liffState.profile = profile;
       liff.sendMessages([{
       'type': 'text',
-      'text': "予約情報：" + field.value.name + field.value.tel
+      'text': "予約情報：" + name + tel
       }]).then(function() {
         window.alert('Message sent');
       }).catch(function(error) {
